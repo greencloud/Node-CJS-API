@@ -1,0 +1,4 @@
+/node_modules/
+.env
+Node-CJS-API.code-workspace
+/src/generated/prisma
