@@ -2,6 +2,8 @@
  * Product Model
  * Handles database operations related to products.
  *
+ * This example shows basic CRUD operations for products in a PostgreSQL database.
+ *
  * Author: Garry Molleno Jr
  * License: MIT License
  */
@@ -10,7 +12,13 @@ const { pool } = require('../config/database');
 
 exports.AllProducts = async () => {
   try {
+    // Check performance
+    const start = performance.now();
     const res = await pool.query('SELECT * FROM products ORDER BY id ASC');
+    const end = performance.now();
+
+    console.log(`AllProducts query took ${end - start} milliseconds`);
+
     return res.rows;
   } catch (error) {
     console.error('Error fetching all products:', error.message);

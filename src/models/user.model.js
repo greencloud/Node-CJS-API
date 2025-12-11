@@ -2,6 +2,8 @@
  * User Model
  * Handles database operations related to users.
  *
+ * This example shows basic CRUD operations for users in a PostgreSQL database.
+ *
  * Author: Garry Molleno Jr
  * License: MIT License
  */
@@ -10,7 +12,13 @@ const { pool } = require('../config/database');
 
 exports.getAllUsers = async () => {
   try {
+    // Check performance
+    const start = performance.now();
     const res = await pool.query('SELECT * FROM users ORDER BY id ASC');
+    const end = performance.now();
+
+    console.log(`getAllUsers query took ${end - start} milliseconds`);
+
     return res.rows;
   } catch (error) {
     console.error('Error fetching all users:', error.message);
