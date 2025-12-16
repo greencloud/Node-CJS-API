@@ -8,9 +8,10 @@
  */
 
 const { createClient } = require("redis");
+const _env = require("./env");
 
 const redis = createClient({
-  url: process.env.REDIS_URL || "redis://127.0.0.1:6379"
+  url: _env.REDIS_URL || "redis://127.0.0.1:6379"
 });
 
 // Handle errors
