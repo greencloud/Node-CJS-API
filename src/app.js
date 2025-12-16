@@ -11,7 +11,7 @@
 const express = require('express');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
-const configureHelmet = require('./middleware/security/helmet');
+const configureHelmet = require('./middleware/security/helmet.middleware');
 
 const app = express();
 configureHelmet(app);
